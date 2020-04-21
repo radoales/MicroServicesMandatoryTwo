@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using CustomerManagement.Models;
+using CustomerManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using CustomerManagement.Models;
-using CustomerManagement.Services;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CustomerManagement.Controllers
 {
@@ -15,12 +11,10 @@ namespace CustomerManagement.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly CustomerManagementContext _context;
-        private readonly CustomerService _customerService;
+        private readonly ICustomerService _customerService;
 
-        public CustomersController(CustomerManagementContext context, CustomerService customerService)
+        public CustomersController(ICustomerService customerService)
         {
-            _context = context;
             _customerService = customerService;
         }
 
@@ -59,6 +53,6 @@ namespace CustomerManagement.Controllers
             return await _customerService.DeleteCustomer(id);
         }
 
-       
+
     }
 }

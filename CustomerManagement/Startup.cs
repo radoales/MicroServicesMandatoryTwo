@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CustomerManagement.Models;
+using CustomerManagement.Repositories.Implementations;
+using CustomerManagement.Repositories.Interfaces;
+using CustomerManagement.Services;
+using CustomerManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +32,8 @@ namespace CustomerManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             services.AddDbContext<CustomerManagementContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));

@@ -1,4 +1,5 @@
 ﻿using CustomerManagement.Models;
+using CustomerManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CustomerManagement.Services
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly CustomerManagementContext _context;
 
@@ -91,7 +92,7 @@ namespace CustomerManagement.Services
             return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
 
-        private bool CustomerExists(int id)
+        public bool CustomerExists(int id)
         {
             return _context.Customers.Any(e => e.Id == id);
         }
