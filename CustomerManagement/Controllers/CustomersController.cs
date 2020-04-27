@@ -1,5 +1,5 @@
 ﻿using CustomerManagement.Models;
-using CustomerManagement.Services.Interfaces;
+using CustomerManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
