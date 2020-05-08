@@ -2,7 +2,7 @@
 
 namespace CustomerManagement.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace CustomerManagement.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Email = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -23,18 +23,18 @@ namespace CustomerManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoice",
+                name: "Invoices",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     CustomerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invoice", x => x.Id);
+                    table.PrimaryKey("PK_Invoices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Invoice_Customers_CustomerId",
+                        name: "FK_Invoices_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -42,15 +42,15 @@ namespace CustomerManagement.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invoice_CustomerId",
-                table: "Invoice",
+                name: "IX_Invoices_CustomerId",
+                table: "Invoices",
                 column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Invoice");
+                name: "Invoices");
 
             migrationBuilder.DropTable(
                 name: "Customers");

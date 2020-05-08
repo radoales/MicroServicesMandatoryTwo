@@ -33,7 +33,7 @@ namespace CustomerManagement
             services.AddScoped<ICustomerService, CustomerService>();
 
             services.AddDbContext<CustomerManagementContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
+           options.UseSqlite(Configuration.GetConnectionString("SqlConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

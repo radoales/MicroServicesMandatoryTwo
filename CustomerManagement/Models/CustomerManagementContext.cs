@@ -7,8 +7,9 @@ namespace CustomerManagement.Models
         public CustomerManagementContext(DbContextOptions<CustomerManagementContext> options) 
             : base(options)
         {
-            this.Database.EnsureCreated();
+            
         }
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
     }
