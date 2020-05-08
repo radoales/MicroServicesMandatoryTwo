@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LrJEn93xkQb9NPqcSc5fF9SQlg3rHvXzljxZM7C5qxN5+OPMMx1s9H/hkzN1CQrhHI8C4s6z0VfYeG9K4BcRRw==",
+  "dgSpecHash": "g3qbf9UnAuKN3FFAfQNqCblPois1QQr+PIRhiFJUjJN6mXy5qed5GZnROAg6R/NlDwv/B8wIED81WfS9DWZQVg==",
   "success": true,
   "projectFilePath": "C:\\Programming\\Microservices\\CustomerManagement\\CustomerManagement\\CustomerManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
-    "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\confluent.kafka\\1.4.0\\confluent.kafka.1.4.0.nupkg.sha512",
-    "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\librdkafka.redist\\1.4.0\\librdkafka.redist.1.4.0.nupkg.sha512",
+    "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\confluent.kafka\\1.4.2\\confluent.kafka.1.4.2.nupkg.sha512",
+    "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\librdkafka.redist\\1.4.2\\librdkafka.redist.1.4.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Radoslav Naydenov\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

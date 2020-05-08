@@ -26,7 +26,7 @@
         "dependencies": {
           "AutoMapper": "9.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
-          "Confluent.Kafka": "1.4.0",
+          "Confluent.Kafka": "1.4.2",
           "Microsoft.EntityFrameworkCore": "3.1.3",
           "Microsoft.EntityFrameworkCore.Design": "3.1.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.1",
@@ -342,22 +342,22 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Confluent.Kafka/1.4.0": {
+      "Confluent.Kafka/1.4.2": {
         "dependencies": {
           "System.Memory": "4.5.3",
-          "librdkafka.redist": "1.4.0"
+          "librdkafka.redist": "1.4.2"
         },
         "runtime": {
           "lib/netcoreapp2.1/Confluent.Kafka.dll": {
-            "assemblyVersion": "1.4.0.0",
-            "fileVersion": "1.4.0.0"
+            "assemblyVersion": "1.4.2.0",
+            "fileVersion": "1.4.2.0"
           }
         },
         "compile": {
           "lib/netcoreapp2.1/Confluent.Kafka.dll": {}
         }
       },
-      "librdkafka.redist/1.4.0": {
+      "librdkafka.redist/1.4.2": {
         "runtimeTargets": {
           "runtimes/linux-x64/native/alpine-librdkafka.so": {
             "rid": "linux-x64",
@@ -3735,19 +3735,19 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/7.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512"
     },
-    "Confluent.Kafka/1.4.0": {
+    "Confluent.Kafka/1.4.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5ZF0o5eV3lQOKdz0FhZebUDKUifU5DCz8RHJzG59XnXb2bDlolHAyOwGjQylVtfvHecCO2jkC2Dl8L35lxabEg==",
-      "path": "confluent.kafka/1.4.0",
-      "hashPath": "confluent.kafka.1.4.0.nupkg.sha512"
+      "sha512": "sha512-qnJmuLgK7tJVnn8UcOEi0MbHlnnBhoel0Tl0QFOJQfg+a5uYg2aaozu2oujoG0jO3/YR0tkxMQ1iLAJw7vAmbQ==",
+      "path": "confluent.kafka/1.4.2",
+      "hashPath": "confluent.kafka.1.4.2.nupkg.sha512"
     },
-    "librdkafka.redist/1.4.0": {
+    "librdkafka.redist/1.4.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hUXtBYI8B+IwMZ5g2OQbbsEkpIU9AgErqLUz9ynT1NhrAtk7X5G50u/9tE41hkav/HvVUilr0sFLt7s5MN4OiA==",
-      "path": "librdkafka.redist/1.4.0",
-      "hashPath": "librdkafka.redist.1.4.0.nupkg.sha512"
+      "sha512": "sha512-xNEM89kC02tGDot1NLVPJ8YMZm/B7Ku7z19kpJxmqv5B078MispWFLxTbiJn8dmwXEIxZOEWtME0m6+1C+ACyg==",
+      "path": "librdkafka.redist/1.4.2",
+      "hashPath": "librdkafka.redist.1.4.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",

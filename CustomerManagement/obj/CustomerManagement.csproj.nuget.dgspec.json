@@ -51,7 +51,7 @@
             },
             "Confluent.Kafka": {
               "target": "Package",
-              "version": "[1.4.0, )"
+              "version": "[1.4.2, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

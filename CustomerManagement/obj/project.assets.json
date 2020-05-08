@@ -28,11 +28,11 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Confluent.Kafka/1.4.0": {
+      "Confluent.Kafka/1.4.2": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.0",
-          "librdkafka.redist": "1.4.0"
+          "librdkafka.redist": "1.4.2"
         },
         "compile": {
           "lib/netcoreapp2.1/Confluent.Kafka.dll": {}
@@ -41,7 +41,7 @@
           "lib/netcoreapp2.1/Confluent.Kafka.dll": {}
         }
       },
-      "librdkafka.redist/1.4.0": {
+      "librdkafka.redist/1.4.2": {
         "type": "package",
         "build": {
           "build/_._": {}
@@ -2339,14 +2339,14 @@
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
       ]
     },
-    "Confluent.Kafka/1.4.0": {
-      "sha512": "5ZF0o5eV3lQOKdz0FhZebUDKUifU5DCz8RHJzG59XnXb2bDlolHAyOwGjQylVtfvHecCO2jkC2Dl8L35lxabEg==",
+    "Confluent.Kafka/1.4.2": {
+      "sha512": "qnJmuLgK7tJVnn8UcOEi0MbHlnnBhoel0Tl0QFOJQfg+a5uYg2aaozu2oujoG0jO3/YR0tkxMQ1iLAJw7vAmbQ==",
       "type": "package",
-      "path": "confluent.kafka/1.4.0",
+      "path": "confluent.kafka/1.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "confluent.kafka.1.4.0.nupkg.sha512",
+        "confluent.kafka.1.4.2.nupkg.sha512",
         "confluent.kafka.nuspec",
         "lib/net45/Confluent.Kafka.dll",
         "lib/net45/Confluent.Kafka.xml",
@@ -2360,10 +2360,10 @@
         "lib/netstandard2.0/Confluent.Kafka.xml"
       ]
     },
-    "librdkafka.redist/1.4.0": {
-      "sha512": "hUXtBYI8B+IwMZ5g2OQbbsEkpIU9AgErqLUz9ynT1NhrAtk7X5G50u/9tE41hkav/HvVUilr0sFLt7s5MN4OiA==",
+    "librdkafka.redist/1.4.2": {
+      "sha512": "xNEM89kC02tGDot1NLVPJ8YMZm/B7Ku7z19kpJxmqv5B078MispWFLxTbiJn8dmwXEIxZOEWtME0m6+1C+ACyg==",
       "type": "package",
-      "path": "librdkafka.redist/1.4.0",
+      "path": "librdkafka.redist/1.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2379,7 +2379,7 @@
         "build/native/lib/win/x86/win-x86-Release/v120/librdkafka.lib",
         "build/native/lib/win/x86/win-x86-Release/v120/librdkafkacpp.lib",
         "build/native/librdkafka.redist.targets",
-        "librdkafka.redist.1.4.0.nupkg.sha512",
+        "librdkafka.redist.1.4.2.nupkg.sha512",
         "librdkafka.redist.nuspec",
         "runtimes/linux-x64/native/alpine-librdkafka.so",
         "runtimes/linux-x64/native/centos7-librdkafka.so",
@@ -7288,7 +7288,7 @@
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 9.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
-      "Confluent.Kafka >= 1.4.0",
+      "Confluent.Kafka >= 1.4.2",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.1",
@@ -7348,7 +7348,7 @@
           },
           "Confluent.Kafka": {
             "target": "Package",
-            "version": "[1.4.0, )"
+            "version": "[1.4.2, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
