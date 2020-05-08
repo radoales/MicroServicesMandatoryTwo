@@ -1,18 +1,12 @@
-using CustomerManagement.Implementations.Services;
-using CustomerManagement.Models;
-using CustomerManagement.Repositories.Implementations;
-using CustomerManagement.Repositories.Interfaces;
-using CustomerManagement.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using AutoMapper;
-
 namespace CustomerManagement
 {
+    using AutoMapper;
+    using CustomerManagement.Infrastructure.Extensions;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -22,21 +16,16 @@ namespace CustomerManagement
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddAutoMapper(typeof(Startup).Assembly);
 
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICustomerService, CustomerService>();
-
-            services.AddDbContext<CustomerManagementContext>(options =>
-           options.UseSqlite(Configuration.GetConnectionString("SqlConnection")));
+            services
+            .AddAppServices(this.Configuration)
+            .AddDatabaseConnection(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

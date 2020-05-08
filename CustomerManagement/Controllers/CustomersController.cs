@@ -12,16 +12,19 @@ namespace CustomerManagement.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
+        private readonly IKafkaService _kafkaService;
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, IKafkaService kafkaService)
         {
             _customerService = customerService;
+            _kafkaService = kafkaService;
         }
 
         // GET: api/Customers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
+           
             return await _customerService.GetCustomers();
         }
 
@@ -43,7 +46,11 @@ namespace CustomerManagement.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> PostCustomer(Customer customer)
         {
-            return await _customerService.CreateCustomer(customer);
+            var result = await _customerService.CreateCustomer(customer);
+
+            await _kafkaService.Produce("customer", customer);
+
+            return result;
         }
 
         // DELETE: api/Customers/5
