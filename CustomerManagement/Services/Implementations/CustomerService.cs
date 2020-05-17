@@ -63,38 +63,32 @@ namespace CustomerManagement.Implementations.Services
             }
         }
 
-        public async Task<HttpResponseMessage> CreateCustomer(Customer customer)
+        public async Task<int> CreateCustomer(Customer customer)
         {
-            try
-            {
-                _context.Customers.Add(customer);
-                await _context.SaveChangesAsync();
 
-                return new HttpResponseMessage(System.Net.HttpStatusCode.Created);
-            }
-            catch (Exception e)
-            {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
-            }
-        }
-
-        public async Task<HttpResponseMessage> DeleteCustomer(int id)
-        {
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
-            {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
-            }
-
-            _context.Customers.Remove(customer);
+            _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            return customer.Id;
         }
 
-        public bool CustomerExists(int id)
+    public async Task<HttpResponseMessage> DeleteCustomer(int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+        if (customer == null)
         {
-            return _context.Customers.Any(e => e.Id == id);
+            return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
         }
+
+        _context.Customers.Remove(customer);
+        await _context.SaveChangesAsync();
+
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
     }
+
+    public bool CustomerExists(int id)
+    {
+        return _context.Customers.Any(e => e.Id == id);
+    }
+}
 }

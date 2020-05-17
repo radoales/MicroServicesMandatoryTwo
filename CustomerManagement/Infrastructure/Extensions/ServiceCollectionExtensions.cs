@@ -14,16 +14,16 @@
         {
             services.AddScoped<ICustomerService, CustomerService>();
 
-            var producerConfig = new ProducerConfig();
-            var consumerConfig = new ConsumerConfig();
+            //var producerConfig = new ProducerConfig();
+            //var consumerConfig = new ConsumerConfig();
 
-            configuration.Bind("producer", producerConfig);
-            configuration.Bind("consumer", consumerConfig);
+            //configuration.Bind("producer", producerConfig);
+            //configuration.Bind("consumer", consumerConfig);
 
-            services.AddSingleton<ProducerConfig>(producerConfig);
-            services.AddSingleton<ConsumerConfig>(consumerConfig);
+            //services.AddSingleton<ProducerConfig>(producerConfig);
+            //services.AddSingleton<ConsumerConfig>(consumerConfig);
 
-            services.AddScoped<IKafkaService, KafkaService>();
+            services.AddSingleton<IKafkaService, KafkaService>();
 
             return services;
         }

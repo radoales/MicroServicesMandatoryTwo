@@ -39,24 +39,28 @@ namespace CustomerManagement.Controllers
         [HttpPut("{id}")]
         public async Task<HttpResponseMessage> UpdateCustomer(int id, Customer customer)
         {
+            await _kafkaService.Produce("EditCustomer", customer);
+
             return await _customerService.UpdateCustomer(id, customer);
         }
 
         // POST: api/Customers
         [HttpPost]
-        public async Task<HttpResponseMessage> PostCustomer(Customer customer)
+        public async Task<ActionResult> PostCustomer(Customer customer)
         {
             var result = await _customerService.CreateCustomer(customer);
 
-            await _kafkaService.Produce("customer", customer);
+            await _kafkaService.Produce("AddCustomer", customer);
 
-            return result;
+            return Created(nameof(PostCustomer), customer.Id);
         }
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<HttpResponseMessage> DeleteCustomer(int id)
         {
+            await _kafkaService.Produce("DeleteCustomer", id);
+
             return await _customerService.DeleteCustomer(id);
         }
 

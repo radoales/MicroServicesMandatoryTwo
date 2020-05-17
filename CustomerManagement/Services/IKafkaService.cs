@@ -6,6 +6,6 @@ namespace CustomerManagement.Services
     public interface IKafkaService
     {
         public Task Produce(string topic, object value);
-        public void Consume(string topic);
+       // public void Consume(string topic);
     }
 }
