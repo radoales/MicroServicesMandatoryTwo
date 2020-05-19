@@ -10,6 +10,11 @@ namespace CustomerManagement.Models
             
         }
 
+        public CustomerManagementContext()
+        {
+
+        }
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
     }
