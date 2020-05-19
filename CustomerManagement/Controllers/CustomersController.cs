@@ -1,12 +1,12 @@
-﻿using CustomerManagement.Models;
-using CustomerManagement.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace CustomerManagement.Controllers
+﻿namespace CustomerManagement.Controllers
 {
+    using CustomerManagement.Models;
+    using CustomerManagement.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
@@ -24,7 +24,7 @@ namespace CustomerManagement.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
-           
+
             return await _customerService.GetCustomers();
         }
 

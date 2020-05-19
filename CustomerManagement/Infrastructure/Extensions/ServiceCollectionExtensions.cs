@@ -1,6 +1,5 @@
 ﻿namespace CustomerManagement.Infrastructure.Extensions
 {
-    using Confluent.Kafka;
     using CustomerManagement.Implementations.Services;
     using CustomerManagement.Models;
     using CustomerManagement.Services;
@@ -13,16 +12,6 @@
         public static IServiceCollection AddAppServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ICustomerService, CustomerService>();
-
-            //var producerConfig = new ProducerConfig();
-            //var consumerConfig = new ConsumerConfig();
-
-            //configuration.Bind("producer", producerConfig);
-            //configuration.Bind("consumer", consumerConfig);
-
-            //services.AddSingleton<ProducerConfig>(producerConfig);
-            //services.AddSingleton<ConsumerConfig>(consumerConfig);
-
             services.AddSingleton<IKafkaService, KafkaService>();
 
             return services;
