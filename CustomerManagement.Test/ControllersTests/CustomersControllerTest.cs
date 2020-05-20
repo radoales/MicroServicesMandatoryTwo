@@ -58,11 +58,34 @@
         public async Task UpdateCustomer_ShouldReturn_OkResult()
         {
             //Arrange
+            var customerServiceMock = new Mock<ICustomerService>();
+            var kafkaServiceMock = new Mock<IKafkaService>();
+
+            customerServiceMock
+            .Setup(x => x.UpdateCustomer(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            .ReturnsAsync(true);
+
+            var customersController = new CustomersController(customerServiceMock.Object, kafkaServiceMock.Object);
+
+            var model = new UpdateCustomerRequestModel();
+
+            //Act
+            var result = await customersController.UpdateCustomer(model);
+            //Assert
+            result
+                .Should()
+                .BeOfType<OkResult>();
+        }
+
+        [Fact]
+        public async Task UpdateCustomer_ShouldReturn_BadrequestResult()
+        {
+            //Arrange
             var customerService = new Mock<ICustomerService>();
 
             customerService
             .Setup(x => x.UpdateCustomer(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-            .ReturnsAsync(true);
+            .ReturnsAsync(false);
 
             var customersController = new CustomersController(customerService.Object, null);
 
@@ -73,7 +96,7 @@
             //Assert
             result
                 .Should()
-                .BeOfType<OkResult>();
+                .BeOfType<BadRequestResult>();
         }
     }
 }

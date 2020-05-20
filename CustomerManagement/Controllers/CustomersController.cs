@@ -51,7 +51,7 @@
                 return BadRequest();
             }
 
-            //await _kafkaService.Produce("EditCustomer", model);
+            await _kafkaService.Produce("EditCustomer", model);
 
             return Ok();
         }
