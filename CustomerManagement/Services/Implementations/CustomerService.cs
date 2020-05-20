@@ -54,11 +54,17 @@ namespace CustomerManagement.Implementations.Services
             return true;
         }
 
-        public async Task<int> CreateCustomer(Customer customer)
+        public async Task<int> CreateCustomer(string email, string firstName, string lastName)
         {
+            var customer = new Customer
+            {
+                Email = email,
+                FirstName = firstName,
+                LastName = lastName
+            };
 
-            _context.Customers.Add(customer);
-            await _context.SaveChangesAsync();
+            this._context.Add(customer);
+            await this._context.SaveChangesAsync();
 
             return customer.Id;
         }

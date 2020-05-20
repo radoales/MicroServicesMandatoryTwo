@@ -58,13 +58,17 @@
 
         // POST: api/Customers
         [HttpPost]
-        public async Task<ActionResult> PostCustomer(Customer customer)
-        {
-            var result = await _customerService.CreateCustomer(customer);
+        public async Task<ActionResult> PostCustomer(CreateCustomerRequestModel model)
+        {           
+            var id = await _customerService.CreateCustomer(
+                 model.Email,
+                 model.FirstName,
+                 model.LastName);
 
-            await _kafkaService.Produce("AddCustomer", customer);
+            await _kafkaService.Produce("AddCustomer", model);
 
-            return Created(nameof(PostCustomer), customer.Id);
+            return Created(nameof(PostCustomer), id);
+
         }
 
         // DELETE: api/Customers/5

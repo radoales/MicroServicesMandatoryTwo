@@ -144,6 +144,29 @@
                 .BeOfType<BadRequestResult>();
         }
 
+        [Fact]
+        public async Task PostCustomer_ShouldReturn_OkResult()
+        {
+            //Arrange
+            var customerServiceMock = new Mock<ICustomerService>();
+            var kafkaServiceMock = new Mock<IKafkaService>();
+
+            customerServiceMock
+            .Setup(x => x.CreateCustomer(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            .ReturnsAsync(1);
+
+            var customersController = new CustomersController(customerServiceMock.Object, kafkaServiceMock.Object);
+
+            var model = new CreateCustomerRequestModel();
+
+            //Act
+            var result = await customersController.PostCustomer(model);
+
+            //Assert
+            result
+                .Should()
+                .BeOfType<CreatedResult>();
+        }
 
     }
 }
