@@ -12,7 +12,7 @@ namespace CustomerManagement.Services
          Task<ActionResult<Customer>> GetCustomer(int id);
          Task<bool> UpdateCustomer(int id, string email, string firstName, string lastName);
          Task<int> CreateCustomer(Customer customer);
-         Task<HttpResponseMessage> DeleteCustomer(int id);
+         Task<bool> DeleteCustomer(int id);
          bool CustomerExists(int id);
     }
 }

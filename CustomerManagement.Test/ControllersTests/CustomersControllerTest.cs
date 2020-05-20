@@ -1,18 +1,15 @@
 ﻿namespace CustomerManagement.Test.ControllersTests
 {
     using CustomerManagement.Controllers;
+    using CustomerManagement.Controllers.RequestModels;
+    using CustomerManagement.Models;
+    using CustomerManagement.Services;
+    using FluentAssertions;
+    using Microsoft.AspNetCore.Mvc;
+    using Moq;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Xunit;
-    using FluentAssertions;
-    using System.Collections.Generic;
-    using CustomerManagement.Models;
-    using Moq;
-    using CustomerManagement.Implementations.Services;
-    using static CustomerManagement.Test.SetUps.DataBaseSetUp;
-    using Microsoft.AspNetCore.Mvc;
-    using CustomerManagement.Services;
-    using CustomerManagement.Controllers.RequestModels;
-    using Microsoft.AspNetCore.Http;
 
     public class CustomersControllerTest
     {
@@ -25,9 +22,11 @@
                 .Setup(x => x.GetCustomers())
                 .ReturnsAsync(new List<Customer>());
 
-            var customersController = new CustomersController(customerService.Object,null);
+            var customersController = new CustomersController(customerService.Object, null);
+
             //Act
             var result = await customersController.GetCustomers();
+
             //Assert
             result
                 .Should()
@@ -40,14 +39,15 @@
             //Arrange
             var customerService = new Mock<ICustomerService>();
 
-                customerService
-                .Setup(x => x.GetCustomer(It.IsAny<int>()))
-                .ReturnsAsync(new Customer());
+            customerService
+            .Setup(x => x.GetCustomer(It.IsAny<int>()))
+            .ReturnsAsync(new Customer());
 
             var customersController = new CustomersController(customerService.Object, null);
 
             //Act
             var result = await customersController.GetCustomer(1);
+
             //Assert
             result
                 .Should()
@@ -71,6 +71,7 @@
 
             //Act
             var result = await customersController.UpdateCustomer(model);
+
             //Assert
             result
                 .Should()
@@ -93,10 +94,56 @@
 
             //Act
             var result = await customersController.UpdateCustomer(model);
+
             //Assert
             result
                 .Should()
                 .BeOfType<BadRequestResult>();
         }
+
+        [Fact]
+        public async Task DeleteCustomer_ShouldReturn_OkResult()
+        {
+            //Arrange
+            var customerServiceMock = new Mock<ICustomerService>();
+            var kafkaServiceMock = new Mock<IKafkaService>();
+
+            customerServiceMock
+            .Setup(x => x.DeleteCustomer(It.IsAny<int>()))
+            .ReturnsAsync(true);
+
+            var customersController = new CustomersController(customerServiceMock.Object, kafkaServiceMock.Object);
+
+            //Act
+            var result = await customersController.DeleteCustomer(1);
+
+            //Assert
+            result
+                .Should()
+                .BeOfType<OkResult>();
+        }
+
+        [Fact]
+        public async Task DeleteCustomer_ShouldReturn_BadrequestResult()
+        {
+            //Arrange
+            var customerService = new Mock<ICustomerService>();
+
+            customerService
+            .Setup(x => x.DeleteCustomer(It.IsAny<int>()))
+            .ReturnsAsync(false);
+
+            var customersController = new CustomersController(customerService.Object, null);
+
+            //Act
+            var result = await customersController.DeleteCustomer(1);
+
+            //Assert
+            result
+                .Should()
+                .BeOfType<BadRequestResult>();
+        }
+
+
     }
 }

@@ -63,23 +63,25 @@ namespace CustomerManagement.Implementations.Services
             return customer.Id;
         }
 
-    public async Task<HttpResponseMessage> DeleteCustomer(int id)
-    {
-        var customer = await _context.Customers.FindAsync(id);
-        if (customer == null)
+        public async Task<bool> DeleteCustomer(int id)
         {
-            return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
+            var customer = await _context.Customers.FindAsync(id);
+
+            if (customer == null)
+            {
+                return false;
+            }
+
+            this._context.Remove(customer);
+
+            await this._context.SaveChangesAsync();
+
+            return true;
         }
 
-        _context.Customers.Remove(customer);
-        await _context.SaveChangesAsync();
-
-        return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+        public bool CustomerExists(int id)
+        {
+            return _context.Customers.Any(e => e.Id == id);
+        }
     }
-
-    public bool CustomerExists(int id)
-    {
-        return _context.Customers.Any(e => e.Id == id);
-    }
-}
 }

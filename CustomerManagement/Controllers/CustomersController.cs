@@ -69,13 +69,18 @@
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<HttpResponseMessage> DeleteCustomer(int id)
+        public async Task<ActionResult> DeleteCustomer(int id)
         {
+            var isDeleted = await this._customerService.DeleteCustomer(id);
+
+            if (!isDeleted)
+            {
+                return BadRequest();
+            }
+
             await _kafkaService.Produce("DeleteCustomer", id);
 
-            return await _customerService.DeleteCustomer(id);
+            return Ok();
         }
-
-
     }
 }
