@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CustomerManagement.Models
 {
@@ -12,6 +9,6 @@ namespace CustomerManagement.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool HasInvoices { get; set; }
-        public IEnumerable<Invoice> Invoices { get; set; }
+        public IEnumerable<Invoice> Invoices { get; set; } = new List<Invoice>();
     }
 }

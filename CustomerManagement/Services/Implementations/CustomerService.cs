@@ -36,31 +36,22 @@ namespace CustomerManagement.Implementations.Services
             return customer;
         }
 
-        public async Task<HttpResponseMessage> UpdateCustomer(int id, Customer customer)
+        public async Task<bool> UpdateCustomer(int id, string email, string firstName, string lastName)
         {
-            if (id != customer.Id)
+            var customer = await this._context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (customer == null)
             {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
+                return false;
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            customer.Email = email;
+            customer.FirstName = firstName;
+            customer.LastName = lastName;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CustomerExists(id))
-                {
-                    return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await this._context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<int> CreateCustomer(Customer customer)

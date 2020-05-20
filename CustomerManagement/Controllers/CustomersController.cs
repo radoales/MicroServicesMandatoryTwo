@@ -1,5 +1,6 @@
 ﻿namespace CustomerManagement.Controllers
 {
+    using CustomerManagement.Controllers.RequestModels;
     using CustomerManagement.Models;
     using CustomerManagement.Services;
     using Microsoft.AspNetCore.Mvc;
@@ -37,11 +38,22 @@
 
         // UPDATE: api/Customers/5
         [HttpPut("{id}")]
-        public async Task<HttpResponseMessage> UpdateCustomer(int id, Customer customer)
+        public async Task<ActionResult> UpdateCustomer(UpdateCustomerRequestModel model)
         {
-            await _kafkaService.Produce("EditCustomer", customer);
+            var isUpdated = await this._customerService.UpdateCustomer(
+               model.Id,
+               model.Email,
+               model.FirstName,
+               model.LastName);
 
-            return await _customerService.UpdateCustomer(id, customer);
+            if (!isUpdated)
+            {
+                return BadRequest();
+            }
+
+            //await _kafkaService.Produce("EditCustomer", model);
+
+            return Ok();
         }
 
         // POST: api/Customers

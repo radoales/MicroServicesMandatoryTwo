@@ -148,3 +148,4 @@ C:\Programming\Microservices\CustomerManagement\CustomerManagement\obj\Debug\net
 C:\Programming\Microservices\CustomerManagement\CustomerManagement\obj\Debug\netcoreapp3.1\CustomerManagement.dll
 C:\Programming\Microservices\CustomerManagement\CustomerManagement\obj\Debug\netcoreapp3.1\CustomerManagement.pdb
 C:\Programming\Microservices\CustomerManagement\CustomerManagement\obj\Debug\netcoreapp3.1\CustomerManagement.genruntimeconfig.cache
+C:\Programming\Microservices\CustomerManagement\CustomerManagement\obj\Debug\netcoreapp3.1\CustomerManagement.csprojAssemblyReference.cache
